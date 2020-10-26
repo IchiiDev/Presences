@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schemas.premid.app/metadata/1.0",
+    "author": {
+      "name": "Ichii",
+      "id": "530061924130488351"
+    },
+    "url": [
+      "www.minecraft-france.fr",
+      "forum.minecraft-france.fr"
+    ],
+    "description": {
+      "en": "",
+      "fr": "News, articles, forum, tout ce que vous cherchez sur Minecraft se trouve sur Minecraft-France"
+    },
+    "service": "Minecraft-France",
+    "version": "1.0.0",
+    "logo": "https://i.imgur.com/placeholder.png",
+    "thumbnail": "https://i.imgur.com/placeholder.png",
+    "color": "#417CFE",
+    "tags": [
+      "minecraft",
+      "fr",
+      "news"
+    ],
+    "category": "games"
+  }
