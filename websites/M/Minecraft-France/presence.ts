@@ -57,6 +57,10 @@ function updatePresenceData(){
         presenceData.details = "Regarde les actualités Bedrock";
         presenceData.state = "Blog Minecraft-France";
         break;
+      case "/astuces/":
+        presenceData.details = "Regarde les astuces";
+        presenceData.state = "Blog Minecraft-France";
+        break;
       default:
         presenceData.details = "Lit un article";
         presenceData.state = document.querySelector("h1.post-title").textContent; // Look for the blog post title and displays it on Discord
