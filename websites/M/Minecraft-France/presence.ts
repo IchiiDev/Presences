@@ -20,50 +20,104 @@ let presenceData: PresenceData = {
 function updatePresenceData(){
   
   if (document.location.hostname == "www.minecraft-france.fr") {
-    switch (document.location.pathname) {
-      case "/":
-        presenceData.details = "Regarde la page d'accueil";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/actualites/":
-        presenceData.details = "Regarde les actualités";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/tutoriels-minecraft/":
-        presenceData.details = "Regarde les tutoriels";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/mods/":
-        presenceData.details = "Regarde la liste des mods";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/maps/":
-        presenceData.details = "Regarde la liste des maps";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/shaders-minecraft/":
-        presenceData.details = "Regarde les shaders";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/datapacks/":
-        presenceData.details = "Regarde les datapacks";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/resources-packs/":
-        presenceData.details = "Regarde les resources packs";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/minecraft-bedrock-edition/":
-        presenceData.details = "Regarde les actualités Bedrock";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      case "/astuces/":
-        presenceData.details = "Regarde les astuces";
-        presenceData.state = "Blog Minecraft-France";
-        break;
-      default:
-        presenceData.details = "Lit un article";
-        presenceData.state = document.querySelector("h1.post-title").textContent; // Look for the blog post title and displays it on Discord
+    // Front page
+    if (document.location.pathname == "/") {
+      presenceData.details = "Regarde la page d'accueil";
+      presenceData.state = "Blog Minecraft-France";
+    }
+    // All news page
+    else if (document.location.pathname == "/actualites/") {
+      presenceData.details = "Regarde les actualités";
+      presenceData.state = "Blog Minecraft-France";
+    }
+    // Theses pages may change in the future, the presence will be updated if the categories changes 
+    else if (document.location.pathname == "/minecraft-1-17/") {
+      presenceData.details = "Regarde les actualités";
+      presenceData.state = "Minecraft 1.17";
+    }
+    else if (document.location.pathname == "/minecraft-dungeons/") {
+      presenceData.details = "Regarde les actualités";
+      presenceData.state = "Minecraft Dungeons";
+    }
+    else if (document.location.pathname == "/minecraft-earth/") {
+      presenceData.details = "Regarde les actualités";
+      presenceData.state = "Minecraft Earth";
+    }
+    // Tutorials page
+    else if (document.location.pathname == "/tutoriels-minecraft/") {
+      presenceData.details = "Regarde les tutoriels";
+      presenceData.state = "Blog Minecraft-France";
+    }
+    // Mods categories
+    else if (document.location.pathname.includes("/mods/")) {
+      let mods_type = document.querySelector("h1.page-title").textContent; // Checks for the mods category
+      presenceData.details = "Regarde la liste des mods";
+      presenceData.state = (mods_type != "Mods") ? mods_type : "Blog Minecraft-France"; // If the mods category is default, display "Blog Minecraft-France". If not, displays the category name.
+    }
+    // Maps categories
+    else if (document.location.pathname == "/maps/") {
+      presenceData.details = "Regarde la liste des maps";
+      presenceData.state = "Blog Minecraft-France";
+    }
+    else if (document.location.pathname == "/maps-aventure/") {
+      presenceData.details = "Regarde la liste des maps";
+      presenceData.state = "Maps Aventure";
+    }
+    else if (document.location.pathname == "/map-de-constructions/") {
+      presenceData.details = "Regarde la liste des maps";
+      presenceData.state = "Maps de constructions";
+    }
+    else if (document.location.pathname == "/maps-mini-jeux/") {
+      presenceData.details = "Regarde la liste des maps";
+      presenceData.state = "Maps Mini-Jeux";
+    }
+    else if (document.location.pathname == "/map-pvp/") {
+      presenceData.details = "Regarde la liste des maps";
+      presenceData.state = "Maps PvP";
+    } 
+    else if (document.location.pathname == "/maps-multijoueurs/") {
+      presenceData.details = "Regarde la liste des maps";
+      presenceData.state = "Maps Multi-Joueurs";
+    }
+    else if (document.location.pathname == "/maps-solo/") {
+      presenceData.details = "Regarde la liste des maps";
+      presenceData.state = "Maps Solo";
+    }
+    // Shaders page
+    else if (document.location.pathname == "/shaders-minecraft/") {
+      presenceData.details = "Regarde les shaders";
+      presenceData.state = "Blog Minecraft-France";
+    }
+    // Datapacks page
+    else if (document.location.pathname == "/datapacks/") {
+      presenceData.details = "Regarde les datapacks";
+      presenceData.state = "Blog Minecraft-France";
+    }
+    // Resources packs categories
+    else if (document.location.pathname.includes("/resources-pack/")) {
+      let resource_type = document.querySelector("h1.page-title").textContent; // Checks for the resource pack category
+      presenceData.details = "Regarde les resources packs";
+      presenceData.state = (resource_type != "Resource Packs") ? resource_type : "Blog Minecraft-France"; // If the resources packs category is default, display "Blog Minecraft-France". If not, displays the category name.
+    }
+    // Minecraft Bedrock edition categories
+    else if (document.location.pathname.includes("/minecraft-bedrock-edition/")) {
+      let bedrock_type = document.querySelector("h1.page-title").textContent; // Checks for the resource pack category
+      presenceData.details = "Regarde Minecraft Bedrock";
+      presenceData.state = (bedrock_type != "Minecraft: Bedrock Edition") ? bedrock_type : "Blog Minecraft-France"; // If the resources packs category is default, display "Blog Minecraft-France". If not, displays the category name.
+    }
+    // Hints & tips page
+    else if (document.location.pathname == "/astuces/") {
+      presenceData.details = "Regarde les astuces";
+      presenceData.state = "Blog Minecraft-France";
+    } 
+    else if (document.location.pathname == "/page-partenaires/") {
+      presenceData.details = "Regarde les partenaires";
+      presenceData.state = "Blog Minecraft-France";
+    }
+    // Else if blog article
+    else {
+      presenceData.details = "Lit un article";
+      presenceData.state = document.querySelector("h1.post-title").textContent; // Look for the blog post title and displays it on Discord
     }
 
   }
